@@ -17,6 +17,9 @@ Algorithms we are covering:
 4. Sorting & searching
 
 ### How to push your code to this repository
+
+[Video Explanation of the setup](https://drive.google.com/file/d/1pGKJvLxD3V5zXuTILn0Tv0Nsdbl5pTG5/view?usp=sharing)
+
 1. Clone the repo 
 
 ```
