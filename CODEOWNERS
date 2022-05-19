@@ -1,5 +1,8 @@
 # Default reviewers/codeowners for all code changes
 * @mohamedsugal
 
-# Also sub directories
-/Abdul /Jibril /Mohamed_Sahal /Mohamed_Sugal @mohamedsugal
+# Also subdirectories
+/Abdul @mohamedsugal
+/Jibril @mohamedsugal
+/Mohamed_Sahal @mohamedsugal
+/Mohamed_Sugal @mohamedsugal
