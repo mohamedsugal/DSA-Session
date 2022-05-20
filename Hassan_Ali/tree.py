@@ -1,7 +1,4 @@
-
-from multiprocessing.dummy import Array
-
-
+from typing import List
 class TreeNode:
     def __init__(self,value:str,weight:int):
         self.value = value
@@ -18,7 +15,7 @@ class TreeNode:
 #     print_tree(tree.right)
 
 def find_path(root:TreeNode,city:str)->str:
-    def helper(node:TreeNode,path:list[str],city:str):
+    def helper(node:TreeNode,path:List[str],city:str):
         if not node: return
         path.append(node.value) 
         if city == node.value or helper(node.left,path,city) or helper(node.right,path,city):          
