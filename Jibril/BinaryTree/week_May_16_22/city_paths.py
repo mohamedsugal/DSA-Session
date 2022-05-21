@@ -13,13 +13,13 @@
 2. Find the distance from Seattle to Minneapolis?
 3. Find the distance from Seattle to Dallas?
 
-(3) What about Seattle to Dallas?
 """
 
 
 class TreeNode:
-  def __init__(self, val):
+  def __init__(self, val, distance):
     self.val = val
+    self.distance = distance
     self.right = None
     self.left = None
 
@@ -45,18 +45,28 @@ def find_distance(root, city):
   return sum[0]
 
 def find_distance_helper(root, sum, city):
-    pass
+    if not root:
+      return None
+    sum[0] += root.distance
+    if root.val == city:
+      return True
+    if not root.left and not root.right and root.val != city:
+      sum[0] -= root.distance
+      return False
+    return find_distance_helper(root.left, sum, city) or find_distance_helper(root.right, sum, city)
   
   
-tree = TreeNode("seattle")
-tree.left = TreeNode("Denver")
-tree.right = TreeNode("New york")
-tree.left.left = TreeNode("Miami")
-tree.left.right = TreeNode("Los Angeles")
-tree.right.right = TreeNode("Boston")
-tree.left.right.left = TreeNode("Dallas")
-tree.left.right.left.right = TreeNode("Minneapolis")
+tree = TreeNode("seattle", 0)
+tree.left = TreeNode("Denver", 1305)
+tree.right = TreeNode("New york", 2401)
+tree.left.left = TreeNode("Miami", 2064)
+tree.left.right = TreeNode("Los Angeles", 1016)
+tree.right.right = TreeNode("Boston", 216)
+tree.left.right.left = TreeNode("Dallas", 1435)
+tree.left.right.left.right = TreeNode("Minneapolis", 990)
 
 
 print(path_cities(tree, "Dallas"))
 # output: seattle->Denver->Los Angeles->Dallas
+print(find_distance(tree, "Minneapolis"))
+print(find_distance(tree, "Dallas"))
