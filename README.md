@@ -26,18 +26,29 @@ Algorithms we are covering:
 
 [Video Explanation of the setup](https://drive.google.com/file/d/1pGKJvLxD3V5zXuTILn0Tv0Nsdbl5pTG5/view?usp=sharing)
 
-1. Clone the repo 
+1. Clone the repo using SSH
 
 ```
-git clone <repo-name>
+git clone git@github.com:mohamedsugal/DSA-Session.git
 ```
 2. Create a branch 
 
 ```
-git branch -b <branch-name>
+git branch -b <branch_name>
 ```
-3. Code your solution
-4. Push your changes
-
+3. Navigate to your directory 
+```
+cd <directory_name>
+```
+4. Add your code
+5. Commit the changes 
+```
+git add . && git commit -m "message"
+```
+6. Push your changes
+```
+git push --set-upstream origin <branch_name>
+```
+7. Create the pull request
 
 
