@@ -63,11 +63,11 @@ public class BinaryTree {
 
 
     public static void findPath(Node root, String city){
-        ArrayList<String> Route = new ArrayList<>();
-        if(!checkPath(root, Route, city)) {
+        ArrayList<String> route = new ArrayList<>();
+        if(!checkPath(root, route, city)) {
             System.out.println("No Path");
         }
-        for (String str : Route){
+        for (String str : route){
             System.out.print(str + " - > ");
         }
     }
