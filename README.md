@@ -1,5 +1,11 @@
 # DSA-Session
 
+## Weekly problems are in this Google sheet
+https://docs.google.com/spreadsheets/d/1bQwmaT6KvuziDrTG-SjnjVkawG2rD4izuXvzbtP55dY/edit?usp=sharing
+
+#### Zoom link to the Sunday session can be found in the Google invite.
+Session starts at 8pm CST
+
 ### Sunday session where we cover various Data Structures & Algorithms.
 Some of the Data Structures we are covering:
 1. Arrays
