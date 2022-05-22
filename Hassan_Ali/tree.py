@@ -5,17 +5,9 @@ class TreeNode:
         self.left = None
         self.right = None
         self.weight = weight
-# printing using inorder
-# def print_tree(tree):
-#     if not tree:
-#         return
-
-#     print(tree.value,tree.weight)
-#     print_tree(tree.left)
-#     print_tree(tree.right)
 
 def find_path(root:TreeNode,city:str)->str:
-    def helper(node:TreeNode,path:List[str],city:str):
+    def helper(node:TreeNode,path:List[str],city:str)->bool:
         if not node: return
         path.append(node.value) 
         if city == node.value or helper(node.left,path,city) or helper(node.right,path,city):          
@@ -23,7 +15,7 @@ def find_path(root:TreeNode,city:str)->str:
         path.pop() 
         return False
 
-    paths = []
+    paths:List[str] = []
     helper(root,paths,city)
     res = ""
     for p in paths:
@@ -33,9 +25,9 @@ def find_path(root:TreeNode,city:str)->str:
 # find distance
 def measure_dist(root:TreeNode,city:str)->list[int]:
 
-    dist1:list[int]= [root.weight]
+    dist1:List[int]= [root.weight]
 
-    def helper(node,path,city):
+    def helper(node:TreeNode,path:List[str],city:str)->bool:
         if not node: return
         path.append(node.value) 
         if city == node.value or helper(node.left,path,city) or helper(node.right,path,city):        
