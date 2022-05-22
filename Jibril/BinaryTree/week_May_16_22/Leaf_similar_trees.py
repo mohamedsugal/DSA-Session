@@ -6,6 +6,24 @@ class TreeNode:
         self.left = left
         self.right = right
 class Solution:
+    # Itterative solution
+    def leafSimilar_itter(self, root1: Optional[TreeNode], root2: Optional[TreeNode]) -> bool:
+        return self.leave_nodes_itter(root1) == self.leave_nodes_itter(root2)
+        
+    
+    def leave_nodes_itter(self, root):
+        leaves = []
+        stack = []
+        while stack or root:
+            while root:
+                stack.append(root)
+                root = root.left
+            root = stack.pop()
+            if not root.left and not root.right:
+                leaves.append(root.val)
+            root = root.right
+        return leaves
+      
     def leafSimilar(self, root1: Optional[TreeNode], root2: Optional[TreeNode]) -> bool:
         return self.leave_nodes(root1) == self.leave_nodes(root2)
         
