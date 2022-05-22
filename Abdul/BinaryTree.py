@@ -1,30 +1,59 @@
-# A class to store a binary tree node
-class City:
-    def __init__(self, cityName, left=None, right=None, distance=0):
-        self.cityName = cityName
+class TreeNode: 
+    def __init__(self, name, distance) -> None:
+        self.name = name 
         self.distance = distance
-        self.left = left
-        self.right = right
+        self.left = self.right = None 
+
+cities = TreeNode("Seattle", 0)
+cities.left = TreeNode("Denver", 1305)
+cities.right = TreeNode("New York", 2401)
+cities.right.right = TreeNode("Boston", 216)
+cities.left.left = TreeNode("Miami", 2064)
+cities.left.right = TreeNode("Los Angles", 1016)
+cities.left.right.left = TreeNode("Dallas", 1435)
+cities.left.right.left.right = TreeNode("Minneapolis", 990)
+
+def find_path(city: TreeNode, destination: str, totalPath: str) -> str: 
+	# return if city is None
+	if not city:
+		return 
+
+	# we arrive at the city that we are looking for
+	if city.name == destination:  
+		return totalPath + " -> " + city.name
+
+	# recursive
+	s1 = find_path(city.left, destination, totalPath + " -> " + city.name)
+	s2 = find_path(city.right, destination, totalPath + " -> " +  city.name) 
+
+	# return which ever is not none
+	if s1:
+		return s1
+	if s2:
+		return s2
+
+def find_distance(city: TreeNode, destination: str, totalDis: int) -> str: 
+
+	# return if city is None
+	if not city:
+		return 
+
+	# we arrive at the city that we are looking for
+	if city.name == destination:  
+		return totalDis + city.distance
+
+	# recursive
+	s1 = find_distance(city.left, destination, totalDis + city.distance)
+	s2 = find_distance(city.right, destination, totalDis + city.distance) 
+
+	# return which ever is not none
+	if s1:
+		return s1
+	if s2:
+		return s2
 
 
-class Tree:
+print(find_path(cities, "Dallas","")) 
 
-	def __init__(self, root):
-		self.root = root
-
-
-
-
-root = City("Seattle")
-
-root.right = City("Denver",distance=1305)
-root.right.right = City("Maimi",distance=2064)
-root.right.left = City("Los Angeles",distance=1016)
-root.right.left.right = City("Dallas",distance=1435)
-root.right.left.left = City("Minneapolis",distance=990)
-
-root.left = City("New York",distance=1305)
-root.left.left = City("Boston",distance=216)
-
-tree = Tree(root)
-
+print(find_distance(cities, "Dallas",0)) 
+print(find_distance(cities, "Minneapolis",0)) 
