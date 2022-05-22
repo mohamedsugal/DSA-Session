@@ -29,7 +29,7 @@ public class BinaryTree {
         root.right.right = new Node(boston);
 
 
-        BinaryTree.FindPath(root, "minneapolis");;
+        BinaryTree.findPath(root, "minneapolis");
         computeDistance();
 
 //        FindPathIterativly(root);;
@@ -43,13 +43,13 @@ public class BinaryTree {
         Recursive Solution
      */
 
-    public static ArrayList<Object> RouteMiles = new ArrayList<>();
+    public static ArrayList<Integer> routeMile = new ArrayList<>();
 
-    public static void computeDistance(){
+    public static void computeDistance(Node root, City){
         int distance = 0;
-        for(int i = 0; i < RouteMiles.size(); i++){
-            int Mile = (int) RouteMiles.get(i);
-            distance += Mile;
+        for(int i = 0; i < routeMile.size(); i++){
+            int mile = (int) routeMile.get(i);
+            distance += mile;
         }
         System.out.println();
         System.out.println("Distance - > "  + distance);
@@ -62,13 +62,13 @@ public class BinaryTree {
      */
 
 
-    public static void FindPath(Node root, String city){
-        ArrayList<Object> Route = new ArrayList<>();
-        if(!CheckPath(root, Route, city)) {
+    public static void findPath(Node root, String city){
+        ArrayList<String> Route = new ArrayList<>();
+        if(!checkPath(root, Route, city)) {
             System.out.println("No Path");
         }
-        for (Object obj : Route){
-            System.out.print(obj + " - > ");
+        for (String str : Route){
+            System.out.print(str + " - > ");
         }
     }
 
@@ -78,7 +78,7 @@ public class BinaryTree {
         Static Method CheckPath : Check if
      */
 
-    public static boolean CheckPath(Node root, ArrayList<Object> route, String city){
+    public static boolean checkPath(Node root, ArrayList<String> route, String city){
 
         if(root == null) {  // Check if root is Empty
             return false;
@@ -93,7 +93,7 @@ public class BinaryTree {
         }
         // We recursively Check Left and Right of the tree to Check if City Exists.
 
-        if((CheckPath(root.left, route, city)) || (CheckPath(root.right, route, city))){
+        if((checkPath(root.left, route, city)) || (checkPath(root.right, route, city))){
             RouteMiles.add(root.city.getMiles());
             return true;
         }
