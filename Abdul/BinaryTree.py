@@ -23,34 +23,20 @@ def find_path(city: TreeNode, destination: str, totalPath: str) -> str:
 		return totalPath + " -> " + city.name
 
 	# recursive
-	s1 = find_path(city.left, destination, totalPath + " -> " + city.name)
-	s2 = find_path(city.right, destination, totalPath + " -> " +  city.name) 
-
-	# return which ever is not none
-	if s1:
-		return s1
-	if s2:
-		return s2
-
-def find_distance(city: TreeNode, destination: str, totalDis: int) -> str: 
-
+	return find_path(city.left, destination, totalPath + " -> " + city.name) or \
+	find_path(city.right, destination, totalPath + " -> " +  city.name)  
+ 
+def find_distance(city: TreeNode, destination: str, totalDis: int) -> str:   
 	# return if city is None
-	if not city:
+	if city is None:
 		return 
 
 	# we arrive at the city that we are looking for
-	if city.name == destination:  
-		return totalDis + city.distance
+	if city.name == destination:    
+		return totalDis + city.distance 
 
-	# recursive
-	s1 = find_distance(city.left, destination, totalDis + city.distance)
-	s2 = find_distance(city.right, destination, totalDis + city.distance) 
-
-	# return which ever is not none
-	if s1:
-		return s1
-	if s2:
-		return s2
+	return find_distance(city.left, destination, totalDis + city.distance) or \
+	find_distance(city.right, destination, totalDis + city.distance) 
 
 
 print(find_path(cities, "Dallas","")) 
