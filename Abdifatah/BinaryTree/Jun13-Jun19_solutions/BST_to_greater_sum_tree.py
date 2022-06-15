@@ -7,8 +7,9 @@ class TreeNode:
 
 def bstToGst(root: TreeNode) -> TreeNode:
     total = 0
-    # Reverse inorder traversal, calculate sum and then update
 
+    # Order is (right, root, left) --> basically reversed in-order traversal.
+    # Reverse inorder traversal, calculate total and then update root.val to total.
     def dfs(node):
         nonlocal total
         if not node:
