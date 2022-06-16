@@ -33,10 +33,10 @@ def max_level_sum(root):
     maximal = levels_sum[0]
     max_index = 0
     for i in range(len(levels_sum)):
-        curr = levels_sum[i]
-        if curr > maximal:
+        num = levels_sum[i]
+        if num > maximal:
             max_index = i
-            maximal = curr
+            maximal = num
 
     return max_index + 1
 
